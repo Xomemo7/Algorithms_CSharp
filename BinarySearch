@@ -1,0 +1,17 @@
+public static int BinarySearch(List<int>list,int key) //list must be sorted
+{
+    int mid,min = 0, max=list.Count-1;
+   
+    while (min <= max)
+    {
+        mid = (min+max)/2;
+        if (key==list[mid])
+            return mid;
+        if (key > list[mid])
+            min = mid+1;
+        else
+            max = mid-1;
+
+    }
+    return -1;
+}
