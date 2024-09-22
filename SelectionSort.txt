@@ -1,29 +1,27 @@
-static List<int> selectionSort(List<int>list)
- {
-     int max;
-     int maxIndex;
-     
-     int unsortedListLength=list.Count;
-     while (unsortedListLength > 1)
-     {
-         max = list[0];
-         maxIndex=0;
-         for (int i = 0; i < unsortedListLength; i++)
-         {
-             if (max < list[i])
-             {
-                 max = list[i];
-                 maxIndex = i;
-             }
+static public void Swap<T>(List<T> list,int index1,int index2)
+{
+    T temp = list[index1];
+    list[index1] = list[index2];
+    list[index2] = temp;
 
-         }
-         Swap(ref list, unsortedListLength - 1, maxIndex);
-         
-         unsortedListLength--;
-     }
-     
+}
 
-     return list;
-
-
- }
+static public void SelectionSort(List<int> list)
+{
+    int SortedListSize = 0;
+    int maxIndex;
+    do
+    {
+        maxIndex= 0;
+        for (int i = 0; i < list.Count-SortedListSize; i++)
+        {
+            if (list[i] > list[maxIndex])
+                maxIndex = i;
+                
+        }
+        Swap(list, maxIndex, (list.Count-1) - SortedListSize);//swap max with last item in unsorted list
+        SortedListSize++;
+    }
+    while (SortedListSize<list.Count);
+    
+            
