@@ -1,23 +1,30 @@
- static public void Swap<T>(List<T> list,int index1,int index2)
- {
-     T temp = list[index1];
-     list[index1] = list[index2];
-     list[index2] = temp;
+static public void Swap<T>(List<T> list,int index1,int index2)
+{
+    T temp = list[index1];
+    list[index1] = list[index2];
+    list[index2] = temp;
 
- }
- static public void BubbleSort(List<int> list)
- {
-     int SortedListSize = 0;
-     do
-     {
-         for (int i = 0; i < (list.Count-1)-SortedListSize; i++)
-         {
-             if (list[i] > list[i+1])
-                 Swap(list,i,i+1);
-         }
-         SortedListSize++;
-     }
-     while (SortedListSize<list.Count);
-     
-     
- }
+}
+
+static public void BubbleSort(List<int> list)
+{
+    int SortedListSize = 0;
+    bool Swapped;
+    do
+    {
+        Swapped = false;
+        for (int i = 0; i < (list.Count-1)-SortedListSize; i++)
+        {
+            if (list[i] > list[i+1])
+            {
+                Swap(list, i, i + 1);
+                Swapped = true;
+            }
+                
+        }
+        SortedListSize++;
+    }
+    while ((SortedListSize<list.Count)&&Swapped);//if swap happens then that means it is not sorted
+    
+    
+}
